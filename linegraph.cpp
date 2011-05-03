@@ -9,7 +9,7 @@
 #include <QPointF>
 
 #define line_color_cnt 4
-static QColor line_colors[] = { Qt::red, Qt::magenta, Qt::darkGreen, Qt::cyan };
+static QColor line_colors[] = { Qt::red, Qt::darkMagenta, Qt::darkGreen, Qt::darkCyan };
 
 LineGraph *LineGraph::fromCsv(QIODevice &device)
 {
