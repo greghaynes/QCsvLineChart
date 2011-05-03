@@ -8,6 +8,9 @@
 #include <QVector>
 #include <QPointF>
 
+#define line_color_cnt 4
+static QColor line_colors[] = { Qt::red, Qt::magenta, Qt::darkGreen, Qt::cyan };
+
 LineGraph *LineGraph::fromCsv(QIODevice &device)
 {
 	int i;
@@ -58,11 +61,14 @@ LineGraph *LineGraph::fromCsv(QIODevice &device)
 	QVector<qreal> x_points(x_vals.size());
 	for(i = 0;i < x_points.size();i++)
 		x_points[i] = i;
+	i = 0;
 	Q_FOREACH(arg, plots.keys()) {
 		c = new QwtPlotCurve(arg);
 		qDebug() << arg << plots[arg];
 		c->setData(x_points, plots[arg]);
+		c->setPen(line_colors[i%line_color_cnt]);
 		c->attach(lg);
+		++i;
 	}
 
 	lg->insertLegend(new QwtLegend(), QwtPlot::RightLegend);
