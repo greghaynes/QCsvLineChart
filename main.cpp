@@ -5,6 +5,7 @@
 #include <QList>
 #include <QString>
 #include <QFile>
+#include <QDebug>
 
 int main(int argc, char **argv)
 {
@@ -18,9 +19,13 @@ int main(int argc, char **argv)
 			QFile *f = new QFile(file);
 			f->open(QIODevice::ReadOnly);
 			LineGraph *lg = LineGraph::fromCsv(*f);
+			if(lg)
+				lg->show();
+			else
+				qDebug() << "Invalid line graph";
 		}
 	}
 
-	return 0;
+	return app.exec();
 }
 

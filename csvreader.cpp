@@ -23,7 +23,8 @@ QList< QList<QString> > CsvReader::parseToEnd(void)
 	QList< QList<QString> > lineArgs;
 	QString cur_line;
 	Q_FOREACH(cur_line, lines) {
-		lineArgs.append(cur_line.split(','));
+		if(!cur_line.isEmpty())
+			lineArgs.append(cur_line.split(','));
 	}
 
 	return lineArgs;
