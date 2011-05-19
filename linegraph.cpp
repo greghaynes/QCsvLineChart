@@ -79,6 +79,7 @@ LineGraph *LineGraph::fromCsv(QIODevice &device)
 LineGraph::LineGraph(QWidget *parent)
 	: QwtPlot(parent)
 {
+	setCanvasBackground(Qt::white);
 }
 
 LineGraph::LineGraph(const QwtText &title, QWidget *parent)
